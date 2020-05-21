@@ -20,13 +20,11 @@ while True:
             if sensor.Name == "CPU Core #1" or sensor.Name == "CPU Core #2":
                 # print to console and then publish the values
                 broker = "127.0.0.1"
-                port = 8883
+                port = 1883
                 print(sensor.Name)
                 print(sensor.Value)
-                publish.single(topic="Lithial/CoreName", payload=sensor.Name, hostname=broker, port=port,
-                               tls={"ca_certs": "C:\\Users\Lithial\Desktop\Keys\SecondAttempt\ca-cert.pem"})
-                publish.single(topic="Lithial/CoreTemp", payload=sensor.Value, hostname=broker, port=port,
-                               tls={"ca_certs": "C:\\Users\Lithial\Desktop\Keys\SecondAttempt\ca-cert.pem"})
+                publish.single(topic="Lithial/CoreName", payload=sensor.Name, hostname=broker, port=port)
+                publish.single(topic="Lithial/CoreTemp", payload=sensor.Value, hostname=broker, port=port)
                 print("Publishing complete")
     sleep(10)
 
